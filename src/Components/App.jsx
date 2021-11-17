@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MusicTable from "./MusicTable";
 import axios from "axios";
+import TitleBar from './TitleBar'
+import Footer from './Footer';
 
 class App extends Component {
     constructor(props){
@@ -9,14 +11,7 @@ class App extends Component {
             MusicTable:[],
         };
     }
-    table() {
-        return(
-            <div className='App'>
-                <basicTable />
-            </div>
-        )
-    };
-
+    
     componentDidMount(){
         this.fetchUsers();
     }
@@ -27,7 +22,7 @@ class App extends Component {
             );
             console.log(response.data);
             this.setState({
-                music: response.data,
+                MusicTable: response.data,
             });
         } catch(error) {
             console.log(error);
@@ -37,20 +32,11 @@ class App extends Component {
             console.log(this.state);
             return(
                 <div className="App">
-                    <h1>Music Table</h1>
+                    <TitleBar />
                     <MusicTable music={this.state.MusicTable}/>
-                    {this.state.MusicTable.length > 0 ? (
-                        this.state.MusicTable.map((music) => {
-                        return <p key={music.id}>{music.table}</p>;
-                        })
-                    ) : (
-                        <h2>Loading</h2>
-                    )}
+                      <Footer />
                 </div>
             );
         }
 }
 export default App;
-
-
-

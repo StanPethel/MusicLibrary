@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {
     return ( 
         <footer className= 'footer'>
-            <h4>Stanley Pethel's App Copyright @ 2021</h4>
+            <h4>Music Project 2021</h4>
         </footer>
      );
 }
