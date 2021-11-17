@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import MusicTable from "./MusicTable";
 import axios from "axios";
 
 class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            users:[],
+            MusicTable:[],
         };
     }
 
@@ -20,7 +20,7 @@ class App extends Component {
             );
             console.log(response.data);
             this.setState({
-                users: response.data,
+                music: response.data,
             });
         } catch(error) {
             console.log(error);
@@ -31,9 +31,14 @@ class App extends Component {
             return(
                 <div className="App">
                     <h1>Music Table</h1>
-                    {this.state.users.length > 0 ? this.state.users.map((user)=>{
-                        return <p>{user.title}</p>;
-                    }) : <h2>Loading</h2>}
+                    <MusicTable music={this.state.MusicTable}/>
+                    {this.state.MusicTable.length > 0 ? (
+                        this.state.MusicTable.map((music) => {
+                        return <p key={music.id}>{music.table}</p>;
+                        })
+                    ) : (
+                        <h2>Loading</h2>
+                    )}
                 </div>
             );
         }
