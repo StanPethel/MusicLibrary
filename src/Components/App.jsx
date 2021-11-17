@@ -9,6 +9,13 @@ class App extends Component {
             MusicTable:[],
         };
     }
+    table() {
+        return(
+            <div className='App'>
+                <basicTable />
+            </div>
+        )
+    };
 
     componentDidMount(){
         this.fetchUsers();
@@ -44,3 +51,6 @@ class App extends Component {
         }
 }
 export default App;
+
+
+
