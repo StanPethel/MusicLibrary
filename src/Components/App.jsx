@@ -3,6 +3,7 @@ import MusicTable from "./MusicTable";
 import axios from "axios";
 import TitleBar from './TitleBar'
 import Footer from './Footer';
+import Searchbar from './Searchbar';
 
 class App extends Component {
     constructor(props){
@@ -34,6 +35,7 @@ class App extends Component {
                 <div className="App">
                     <TitleBar />
                     <MusicTable music={this.state.MusicTable}/>
+                    <Searchbar placeholder="Search a song/album/artist/or genre" data={this.state.MusicTable}/>
                       <Footer />
                 </div>
             );

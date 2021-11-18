@@ -7,6 +7,7 @@ function TitleBar(props){
          <div className="col-md-12" style={{ padding: 0 }}>
              <div className="titlebar-nav">
              <h1>Music Selection</h1>
+               
              </div>
              </div>   
         </div>
