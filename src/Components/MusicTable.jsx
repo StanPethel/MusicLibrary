@@ -2,7 +2,7 @@ import React from 'react';
 
 const MusicTable = (props) => {
     console.log(props);
-    let renderedMusic = props.music.map((music)=>{
+    let musicSearch = props.music.map((music)=>{
         return(
             <tr>
                 <td>{music.id}</td>
@@ -37,8 +37,12 @@ const MusicTable = (props) => {
           </div>
          
         </tr>
-         {renderedMusic}
+         {musicSearch}
     </table>
     )
 };
 export default MusicTable;
+
+
+
+

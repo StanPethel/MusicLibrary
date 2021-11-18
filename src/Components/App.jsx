@@ -10,6 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             MusicTable:[],
+            value: 0
         };
     }
     
@@ -29,13 +30,19 @@ class App extends Component {
             console.log(error);
         }
     }
+    userSearch = () => {
+        let randomSearch = this.setRandomSearchValue();
+        this.setState({
+          value: randomSearch
+        });
+      };
         render() {
             console.log(this.state);
             return(
                 <div className="App">
                     <TitleBar />
                     <MusicTable music={this.state.MusicTable}/>
-                    <Searchbar placeholder="Search a song/album/artist/or genre" data={this.state.MusicTable}/>
+                    <Searchbar onClick={this.userSearch}/>
                       <Footer />
                 </div>
             );
