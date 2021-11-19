@@ -10,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             MusicTable:[],
-            value: 0
+            search: '',
         };
     }
     
@@ -30,11 +30,9 @@ class App extends Component {
             console.log(error);
         }
     }
-    userSearch = () => {
-        let randomSearch = this.setRandomSearchValue();
-        this.setState({
-          value: randomSearch
-        });
+    updateSearch = (search) => {
+        this.setstate({search});
+       
       };
         render() {
             console.log(this.state);
@@ -42,7 +40,7 @@ class App extends Component {
                 <div className="App">
                     <TitleBar />
                     <MusicTable music={this.state.MusicTable}/>
-                    <Searchbar onClick={this.userSearch}/>
+                    <Searchbar placeholder="TypeHere" onChangeText={this.updateSearch} value={search}/>
                       <Footer />
                 </div>
             );
