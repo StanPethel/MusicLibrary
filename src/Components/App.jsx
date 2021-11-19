@@ -10,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             MusicTable:[],
-            search: '',
+            search: [],
         };
     }
     
@@ -35,6 +35,7 @@ class App extends Component {
        
       };
         render() {
+            const{search}=this.state;
             console.log(this.state);
             return(
                 <div className="App">
