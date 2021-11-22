@@ -1,14 +1,37 @@
-import React from 'react';
+import React, {Component} from'react';
 import './Searchbar.css';
 
-function SearchBar({search}){
-    return(
-        <div class="input-group">
-            <input type="search" placeholder={search} class="form-control rounded" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" />
-         <button type="button" class="btn btn-outline-primary">search</button>
-        </div>
-    )
+class Searchbar extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+        songSearch: ''
+        }
+    }
+    handleChange = (event) =>{
+        if(event.target.value == ''){
+            this.props.getSongs();
+        }
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    handleSubmit =(event) =>{
+        event.preventDefault();
+        this.props.filterSongs(this.state.songSearch)
+    }
+
+    render(){
+        return(
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Search Bar</label>
+                    <input name="searchTerm" value={this.state.songSearch} type="text" onChange={this.handleChange}/>
+                    <button type="submit">Search</button>
+                </form> 
+            </div>
+        );
+    }
 }
 
-export default SearchBar;
+export default Searchbar;
