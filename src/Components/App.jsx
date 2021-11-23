@@ -10,7 +10,8 @@ class App extends Component {
         super(props);
         this.state = {
             MusicTable:[],
-            search:[],
+            SearchBar:[],
+             
         };
     }
     
@@ -31,29 +32,28 @@ class App extends Component {
         }
     }
 
-    filterSongs = (searchSongs)=> {
-        let filteredSongs = this.state.search.filter((song)=>{
-            if(song.title.includes(searchSongs)|| song.artist.includes(searchSongs)|| song.album.includes(searchSongs)|| song.genre.includes(searchSongs)|| song.releaseDate.includes(searchSongs)){
+    filteredSongs = (songSearch)=> {
+        let filteredSongs = this.state.MusicTable.filter((song)=>{
+            if(song.title.includes(songSearch)|| song.artist.includes(songSearch)|| song.album.includes(songSearch)|| song.genre.includes(songSearch)|| song.releaseDate.includes(songSearch)){
             return true;
         } else { 
             return false;
         }
         });
         this.setState({
-            search: filteredSongs
+            SearchBar: filteredSongs
         });
     }
     
    
     render() {
-        const{search}=this.state;
-        console.log(this.state);
+        
         return(
-            <div className="App">
+            <div> 
                 <TitleBar />
                 <MusicTable music={this.state.MusicTable}/>
-                <Searchbar filterSongs={this.filterSongs} getAllSongs={this.getSongs}/>
-                    <Footer />
+                <Searchbar filteredSongs={this.filterSongs} getAllSongs={this.SearchBar}/>
+                <Footer />
             </div>
         );
     }
